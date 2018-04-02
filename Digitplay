@@ -1,0 +1,60 @@
+
+/**
+ * DigitPlay.java
+ * Finds the number of digits in a positive integer.
+ * @author Jonathon Webster
+ * @version April 2 2018
+ */
+import java.util.Scanner;
+public class DigitPlay
+{
+    public static void main (String[] args)
+    {
+        int num; //a number
+        Scanner scan = new Scanner(System.in);
+        System.out.println ();
+        System.out.print ("Please enter a positive integer: ");
+        num = scan.nextInt ();
+        System.out.println(sumDigits(num));
+        if (num <= 0)
+            System.out.println ( num + " isn't positive -- start over!!");
+        else
+        {
+            // Call numDigits to find the number of digits in the number
+            // Print the number returned from numDigits
+            System.out.println ("\nThe number " + num + " contains " +
+                + numDigits(num) + " digits.");
+            System.out.println ();
+        }
+        // add loop to prompt user for identification numbers to check.
+        // use the following id num’s as test data:
+        // 3429072 --- error
+        // 1800237 --- ok
+        // 88231256 --- ok
+        // 3180012 --- error
+    }
+    // -----------------------------------------------------------
+    // Recursively counts the digits in a positive integer
+    // -----------------------------------------------------------
+    public static int numDigits(int num)
+    {
+        if (num < 10)
+            return (1);
+        else
+            return (1 + numDigits(num/10));
+    }
+
+    /**
+     *This adds all the individual digits in an integer
+     *@param int num, the int being split and added
+     *@return the sum of the digits
+     */   
+     public static int sumDigits(int num)
+    {
+        
+        if (num < 10)
+            return num;
+        else
+            return (num%10 + sumDigits(num/10));
+    }
+}
